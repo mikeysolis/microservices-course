@@ -7,7 +7,7 @@ using Microsoft.VisualBasic;
 
 namespace CommandsService.Controllers;
 
-[Route("api/c/platforms/{platformId:int}/[controller]")]
+[Route("api/c/platforms/{platformId}/[controller]")]
 [ApiController]
 public class CommandsController : ControllerBase
 {
@@ -73,6 +73,6 @@ public class CommandsController : ControllerBase
         var commandReadDto = _mapper.Map<CommandReadDto>(command);
 
         return CreatedAtRoute(nameof(GetCommandForPlatform),
-            new { platformId = platformId, commandId = commandReadDto }, commandReadDto);
+            new { platformId = platformId, commandId = commandReadDto.Id }, commandReadDto);
     }
 }
